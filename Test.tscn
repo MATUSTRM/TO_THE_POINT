@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dcsd48qu80qd1" path="res://Scenes/bandera.tscn" id="4_8tn2x"]
 [ext_resource type="Texture2D" uid="uid://ctodtth1eytxe" path="res://Shape Template/Square.svg" id="5_aq4fw"]
 [ext_resource type="Script" uid="uid://bv2y51nhsdy2j" path="res://Script/Timer.gd" id="6_ivycn"]
+[ext_resource type="Script" uid="uid://bv5dbmvxq3lsh" path="res://Script/damageable.gd" id="6_qs82m"]
+[ext_resource type="Script" uid="uid://81yic0jeeo6j" path="res://Script/tutorial.gd" id="7_q1uvj"]
 
 [sub_resource type="Curve2D" id="Curve2D_rvu7i"]
 _data = {
@@ -49,6 +51,9 @@ _data = {
 &"RESET": SubResource("Animation_2au82"),
 &"road": SubResource("Animation_8tn2x")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q1uvj"]
+size = Vector2(124.999756, 124.99999)
 
 [sub_resource type="Animation" id="Animation_aq4fw"]
 length = 0.001
@@ -125,6 +130,9 @@ _data = {
 &"pop_up": SubResource("Animation_ivycn")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qs82m"]
+size = Vector2(8, 46)
+
 [node name="Test" type="Node2D" unique_id=1113602705]
 
 [node name="PATH LEVEL" type="Path2D" parent="." unique_id=1395030184 node_paths=PackedStringArray("path", "pathf", "animator", "line")]
@@ -147,6 +155,7 @@ rotation = 0.009478389
 rotates = false
 
 [node name="Player" parent="PATH LEVEL/PathFollow1" unique_id=479054183 instance=ExtResource("2_8tn2x")]
+hp = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PATH LEVEL/PathFollow1" unique_id=876528186]
 root_node = NodePath("../..")
@@ -168,10 +177,19 @@ zoom = Vector2(1.65, 1.65)
 [node name="Bandera" parent="." unique_id=1038894258 instance=ExtResource("4_8tn2x")]
 position = Vector2(129, -2)
 
-[node name="Square" type="Sprite2D" parent="." unique_id=1626287150]
+[node name="DAMAGEABLE" type="Sprite2D" parent="." unique_id=1626287150]
 self_modulate = Color(1.0829419e-07, 0.35603723, 0.2095168, 1)
+position = Vector2(25, 0)
 scale = Vector2(0.048, 0.544)
 texture = ExtResource("5_aq4fw")
+
+[node name="Area2D2" type="Area2D" parent="DAMAGEABLE" unique_id=57780076]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("6_qs82m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DAMAGEABLE/Area2D2" unique_id=1664829481]
+shape = SubResource("RectangleShape2D_q1uvj")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1467978644]
 
@@ -202,3 +220,13 @@ vertical_alignment = 1
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/Control" unique_id=1418900481]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_q1uvj")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1039259668]
+position = Vector2(-179, -71)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("7_q1uvj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1235443506]
+position = Vector2(173, 69)
+shape = SubResource("RectangleShape2D_qs82m")

@@ -4,6 +4,7 @@ extends Node
 class_name line_level
 
 
+
 @export var path : Path2D
 @export var pathf : PathFollow2D
 @export var animator : AnimationPlayer
