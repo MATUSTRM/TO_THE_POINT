@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://taxr6daef8bi"]
+
+[ext_resource type="Script" uid="uid://bimf2whg8jst4" path="res://Script/detect_player.gd" id="1_al4sf"]
+[ext_resource type="Texture2D" uid="uid://ctodtth1eytxe" path="res://Shape Template/Square.svg" id="2_al4sf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2au82"]
+radius = 36.95
+
+[node name="OBJETIVO" type="Area2D" unique_id=191101985]
+rotation = 0.009478391
+scale = Vector2(0.072, 0.072)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_al4sf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=586761082]
+shape = SubResource("CircleShape2D_2au82")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1873895231]
+scale = Vector2(1.0000001, 1.0000001)
+texture = ExtResource("2_al4sf")

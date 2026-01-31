@@ -1,0 +1,204 @@
+[gd_scene format=3 uid="uid://bwso35h0hpp76"]
+
+[ext_resource type="Script" uid="uid://c1c605vmemp3j" path="res://Test.gd" id="1_njov2"]
+[ext_resource type="PackedScene" uid="uid://cp4r4cm52t46l" path="res://Scenes/player.tscn" id="2_8tn2x"]
+[ext_resource type="PackedScene" uid="uid://taxr6daef8bi" path="res://Scenes/objetivo.tscn" id="3_2au82"]
+[ext_resource type="PackedScene" uid="uid://dcsd48qu80qd1" path="res://Scenes/bandera.tscn" id="4_8tn2x"]
+[ext_resource type="Texture2D" uid="uid://ctodtth1eytxe" path="res://Shape Template/Square.svg" id="5_aq4fw"]
+[ext_resource type="Script" uid="uid://bv2y51nhsdy2j" path="res://Script/Timer.gd" id="6_ivycn"]
+
+[sub_resource type="Curve2D" id="Curve2D_rvu7i"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -58, -29, 0, 0, 0, 0, 189, -29)
+}
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_2au82"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow1:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_8tn2x"]
+resource_name = "road"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow1:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aq4fw"]
+_data = {
+&"RESET": SubResource("Animation_2au82"),
+&"road": SubResource("Animation_8tn2x")
+}
+
+[sub_resource type="Animation" id="Animation_aq4fw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Text:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Text:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["3"]
+}
+
+[sub_resource type="Animation" id="Animation_ivycn"]
+resource_name = "pop_up"
+length = 3.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Text:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.7, 1, 1.1666666, 1.3333334, 1.7, 2.2155335, 2.3822002, 2.5488667, 2.8666666, 3.1273549),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.4, 1.4), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0), Vector2(1.4, 1.4), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0), Vector2(1.4, 1.4), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Text:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2.2212987),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": ["3", "2", "1"]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"emitir_start"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q1uvj"]
+_data = {
+&"RESET": SubResource("Animation_aq4fw"),
+&"pop_up": SubResource("Animation_ivycn")
+}
+
+[node name="Test" type="Node2D" unique_id=1113602705]
+
+[node name="PATH LEVEL" type="Path2D" parent="." unique_id=1395030184 node_paths=PackedStringArray("path", "pathf", "animator", "line")]
+position = Vector2(-60, 28)
+curve = SubResource("Curve2D_rvu7i")
+script = ExtResource("1_njov2")
+path = NodePath(".")
+pathf = NodePath("PathFollow1")
+animator = NodePath("PathFollow1/AnimationPlayer")
+using = true
+line = NodePath("Line2D")
+
+[node name="Line2D" type="Line2D" parent="PATH LEVEL" unique_id=1363213671]
+points = PackedVector2Array(-58, -29, 189, -29)
+width = 2.144
+
+[node name="PathFollow1" type="PathFollow2D" parent="PATH LEVEL" unique_id=383303336]
+position = Vector2(-58, -29)
+rotation = 0.009478389
+rotates = false
+
+[node name="Player" parent="PATH LEVEL/PathFollow1" unique_id=479054183 instance=ExtResource("2_8tn2x")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PATH LEVEL/PathFollow1" unique_id=876528186]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_aq4fw")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="PATH LEVEL" unique_id=140392958]
+position = Vector2(189, -29)
+progress = 260.0
+
+[node name="OBJETIVO" parent="PATH LEVEL/PathFollow2D" unique_id=191101985 node_paths=PackedStringArray("level", "bandera") instance=ExtResource("3_2au82")]
+level = NodePath("../..")
+using = true
+bandera = NodePath("../../../Bandera")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=428855998]
+position = Vector2(1, 0)
+zoom = Vector2(1.65, 1.65)
+
+[node name="Bandera" parent="." unique_id=1038894258 instance=ExtResource("4_8tn2x")]
+position = Vector2(129, -2)
+
+[node name="Square" type="Sprite2D" parent="." unique_id=1626287150]
+self_modulate = Color(1.0829419e-07, 0.35603723, 0.2095168, 1)
+scale = Vector2(0.048, 0.544)
+texture = ExtResource("5_aq4fw")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1467978644]
+
+[node name="Control" type="Control" parent="HUD" unique_id=953647448 node_paths=PackedStringArray("level", "animator")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_ivycn")
+level = NodePath("../../PATH LEVEL")
+animator = NodePath("AnimationPlayer")
+
+[node name="Text" type="Label" parent="HUD/Control" unique_id=22299153]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(576, 324)
+theme_override_font_sizes/font_size = 120
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/Control" unique_id=1418900481]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_q1uvj")
