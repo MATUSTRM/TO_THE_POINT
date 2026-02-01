@@ -52,5 +52,5 @@ func change_color():
 			set_collision_mask_value(6,false)
 		colores.two:
 			modulate = Color.BLACK
-			set_collision_mask_value(5,true)
-			set_collision_mask_value(6,false)
+			set_collision_mask_value(5,false)
+			set_collision_mask_value(6,true)

@@ -46,7 +46,6 @@ func play_sfx_oneshot(sfx_audio : AudioStream):
 			sfx_oneshot[index].stream = sfx_audio
 			sfx_oneshot[index].play()
 			index += 1;
-			print(index)
 	else:
 		index = 0
 
