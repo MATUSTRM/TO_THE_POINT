@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://q08p33hse2h8" path="res://Script/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://b38id3a8u6cbv" path="res://Shape Template/Circle.svg" id="2_6t5aa"]
+[ext_resource type="AudioStream" uid="uid://c7yisignyn4l1" path="res://836201__matustrm__ui_hover.wav" id="2_vgqql"]
 [ext_resource type="Script" uid="uid://icjsfjpl4w1j" path="res://Script/Detect_world.gd" id="3_6t5aa"]
+[ext_resource type="AudioStream" uid="uid://1ujcqmr0bysw" path="res://835881__matustrm__failed.wav" id="5_fkybt"]
 
 [sub_resource type="Curve" id="Curve_cvnsp"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0625, 0.19101131), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -17,6 +19,7 @@ scale = Vector2(1.0000001, 1.0000001)
 script = ExtResource("3_6t5aa")
 player = NodePath("HP_player")
 color = 1
+sfx_change = ExtResource("2_vgqql")
 
 [node name="Detect_world" type="Sprite2D" parent="." unique_id=216837348]
 rotation = -1.2532651
@@ -43,6 +46,7 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_cvnsp")
 sprite = NodePath("../Detect_world")
+sfx_die = ExtResource("5_fkybt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HP_player" unique_id=416464269]
 shape = SubResource("CircleShape2D_aq4fw")

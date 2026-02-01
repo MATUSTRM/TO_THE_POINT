@@ -6,6 +6,7 @@ enum colores{one, two}
 @export var player : hp_Player
 @export var color : colores
 @export var active : bool
+@export var sfx_change : AudioStream
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -16,6 +17,7 @@ func _process(delta: float) -> void:
 	set_color()
 	if active:
 		if Input.is_action_just_pressed("cambiar"):
+			audiomanager.play_sfx_oneshot(sfx_change)
 			if color == 0:
 				color = 1
 			elif color == 1:

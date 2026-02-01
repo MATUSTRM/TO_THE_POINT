@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://do4rp421j3fiq"]
+
+[ext_resource type="Script" uid="uid://coqq4y4edbp0n" path="res://Scenes/Global/audio_manager.gd" id="1_31djd"]
+[ext_resource type="PackedScene" uid="uid://brualx6ajw2hw" path="res://Scenes/Global/sfx_.tscn" id="2_2j7f3"]
+
+[node name="Audiomanager" type="Node2D" unique_id=1920416747 node_paths=PackedStringArray("ambient", "sfx_ui")]
+script = ExtResource("1_31djd")
+ambient = NodePath("Ambient")
+sfx_ui = NodePath("SFX_UI")
+cantidad_audios = 10
+audiosfx = ExtResource("2_2j7f3")
+
+[node name="Ambient" type="AudioStreamPlayer" parent="." unique_id=845444561]
+
+[node name="SFX_UI" type="AudioStreamPlayer" parent="." unique_id=1868746148]

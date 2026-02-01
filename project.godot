@@ -16,6 +16,10 @@ run/main_scene="uid://bwso35h0hpp76"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+audiomanager="*uid://do4rp421j3fiq"
+
 [display]
 
 window/stretch/mode="canvas_items"

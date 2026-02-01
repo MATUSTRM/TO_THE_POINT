@@ -12,5 +12,6 @@ func _ready() -> void:
 
 func area_enter(area : Area2D):
 	if area is hp_Player:
+		
 		area.take_damage(damage)
 	pass

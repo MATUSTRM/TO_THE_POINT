@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://brualx6ajw2hw"]
+
+[node name="SFX_" type="AudioStreamPlayer" unique_id=1693838705]

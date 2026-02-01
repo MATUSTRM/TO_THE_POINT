@@ -3,6 +3,7 @@ extends Area2D
 class_name hp_Player
 @export var hp : int 
 @export var sprite : Sprite2D
+@export var sfx_die: AudioStream
 
 func take_damage(damage : int):
 	hp -= damage
@@ -11,5 +12,7 @@ func take_damage(damage : int):
 	
 
 func die():
+	audiomanager.play_sfx_oneshot(sfx_die)
 	set_collision_layer_value(2,false)
+	set_deferred("monitorable",false)
 	sprite.visible = false

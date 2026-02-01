@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bloxjhwrt3ypk" path="res://Script/bandera.gd" id="1_845wp"]
 [ext_resource type="Texture2D" uid="uid://ctodtth1eytxe" path="res://Shape Template/Square.svg" id="1_nh85r"]
+[ext_resource type="AudioStream" uid="uid://50rpxxlerwga" path="res://835880__matustrm__completed.wav" id="2_ctxbm"]
 [ext_resource type="Texture2D" uid="uid://b38id3a8u6cbv" path="res://Shape Template/Circle.svg" id="3_x42t8"]
 [ext_resource type="Texture2D" uid="uid://buctbp4ql2rct" path="res://Shape Template/Triangle.svg" id="4_4nav8"]
 
@@ -166,6 +167,7 @@ _data = {
 scale = Vector2(1.6, 1.6)
 script = ExtResource("1_845wp")
 animator = NodePath("AnimationPlayer")
+sfx_victory = ExtResource("2_ctxbm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1996960899]
 libraries/ = SubResource("AnimationLibrary_4nav8")
