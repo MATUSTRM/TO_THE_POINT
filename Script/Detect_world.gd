@@ -7,24 +7,29 @@ enum colores{one, two}
 @export var color : colores
 @export var active : bool
 @export var sfx_change : AudioStream
+@export var is_tutorial : bool
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	set_color()
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	set_color()
+	print(color)
+	if Input.is_action_just_pressed("cambiar"):
+		set_color()
+
+func change_color():
 	if active:
-		if Input.is_action_just_pressed("cambiar"):
 			audiomanager.play_sfx_oneshot(sfx_change)
 			if color == 0:
 				color = 1
-			elif color == 1:
+			else:
 				color = 0
-
-
-
+			set_color()
+			
+			
 func set_color():
 	match color:
 		colores.one:
@@ -39,6 +44,9 @@ func set_color():
 
 
 func active_player():
+	if is_tutorial:
+		is_tutorial = false
+		return
 	active = true
 	
 func inactive_player():

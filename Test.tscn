@@ -57,7 +57,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control/Text:scale")
+tracks/0/path = NodePath("level_Control/Text:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -69,7 +69,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Control/Text:text")
+tracks/1/path = NodePath("level_Control/Text:text")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -85,7 +85,7 @@ length = 3.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control/Text:scale")
+tracks/0/path = NodePath("level_Control/Text:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -97,7 +97,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Control/Text:text")
+tracks/1/path = NodePath("level_Control/Text:text")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -109,7 +109,7 @@ tracks/1/keys = {
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Control")
+tracks/2/path = NodePath("level_Control")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -161,6 +161,9 @@ rotation = 0.009478389
 rotates = false
 
 [node name="Player" parent="PATH LEVEL/PathFollow1" unique_id=479054183 instance=ExtResource("2_8tn2x")]
+color = 1
+active = true
+is_tutorial = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PATH LEVEL/PathFollow1" unique_id=876528186]
 root_node = NodePath("../..")
@@ -188,7 +191,7 @@ position = Vector2(25, 0)
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1467978644]
 
-[node name="Control" type="Control" parent="HUD" unique_id=953647448 node_paths=PackedStringArray("playercontroller", "level", "animator")]
+[node name="level_Control" type="Control" parent="HUD" unique_id=953647448 node_paths=PackedStringArray("playercontroller", "level", "animator")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -201,7 +204,7 @@ level = NodePath("../../PATH LEVEL")
 animator = NodePath("AnimationPlayer")
 sfx_count = ExtResource("7_qs82m")
 
-[node name="Text" type="Label" parent="HUD/Control" unique_id=22299153]
+[node name="Text" type="Label" parent="HUD/level_Control" unique_id=22299153]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -215,16 +218,16 @@ text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/Control" unique_id=1418900481]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/level_Control" unique_id=1418900481]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_q1uvj")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1039259668]
-position = Vector2(-179, -71)
+[node name="Tutorial" type="Area2D" parent="." unique_id=1039259668 node_paths=PackedStringArray("playercontroller")]
+position = Vector2(-67, 1)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("7_q1uvj")
+playercontroller = NodePath("../PATH LEVEL/PathFollow1/Player")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1235443506]
-position = Vector2(173, 69)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tutorial" unique_id=1235443506]
 shape = SubResource("RectangleShape2D_qs82m")

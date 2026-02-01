@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://bx0wsef7a8ka1"]
+
+[ext_resource type="Script" uid="uid://d153x54mjitr0" path="res://Script/transition.gd" id="1_nch6a"]
+[ext_resource type="Shader" uid="uid://c487b1i706nds" path="res://Transition.gdshader" id="2_8qfpf"]
+
+[sub_resource type="Animation" id="Animation_cqdos"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/circle_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_vwb7u"]
+resource_name = "Fade_out"
+length = 0.8333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/circle_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [0.0, 1.04999995231628]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cqdos"]
+_data = {
+&"RESET": SubResource("Animation_cqdos"),
+&"fade_out": SubResource("Animation_vwb7u")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vwb7u"]
+shader = ExtResource("2_8qfpf")
+shader_parameter/circle_size = 0.0
+shader_parameter/screen_width = 160.0
+shader_parameter/screen_height = 100.0
+
+[node name="Transition" type="CanvasLayer" unique_id=950449617 node_paths=PackedStringArray("animator")]
+layer = 5
+script = ExtResource("1_nch6a")
+animator = NodePath("Transition")
+
+[node name="Transition" type="AnimationPlayer" parent="." unique_id=1226828872]
+libraries/ = SubResource("AnimationLibrary_cqdos")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=297544160]
+material = SubResource("ShaderMaterial_vwb7u")
+use_parent_material = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
