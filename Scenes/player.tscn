@@ -2,28 +2,25 @@
 
 [ext_resource type="Script" uid="uid://q08p33hse2h8" path="res://Script/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://b38id3a8u6cbv" path="res://Shape Template/Circle.svg" id="2_6t5aa"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_aq4fw"]
-radius = 4.4721355
+[ext_resource type="Script" uid="uid://icjsfjpl4w1j" path="res://Script/Detect_world.gd" id="3_6t5aa"]
 
 [sub_resource type="Curve" id="Curve_cvnsp"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0625, 0.19101131), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[node name="Player" type="Area2D" unique_id=479054183 node_paths=PackedStringArray("sprite")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_aq4fw"]
+radius = 4.4721355
+
+[node name="Player" type="Node2D" unique_id=1119195415 node_paths=PackedStringArray("player")]
 rotation = 1.2437868
 scale = Vector2(1.0000001, 1.0000001)
-collision_layer = 2
-collision_mask = 0
-script = ExtResource("1_cvnsp")
-sprite = NodePath("Player_sprite")
+script = ExtResource("3_6t5aa")
+player = NodePath("HP_player")
+color = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=416464269]
-shape = SubResource("CircleShape2D_aq4fw")
-
-[node name="Player_sprite" type="Sprite2D" parent="." unique_id=216837348]
+[node name="Detect_world" type="Sprite2D" parent="." unique_id=216837348]
 rotation = -1.2532651
-scale = Vector2(0.14399996, 0.14399996)
+scale = Vector2(0.14399995, 0.14399995)
 texture = ExtResource("2_6t5aa")
 
 [node name="Particle_death" type="CPUParticles2D" parent="." unique_id=445948621]
@@ -40,3 +37,12 @@ gravity = Vector2(0, 0)
 initial_velocity_min = 99.1
 initial_velocity_max = 180.18
 scale_amount_curve = SubResource("Curve_cvnsp")
+
+[node name="HP_player" type="Area2D" parent="." unique_id=1490754279 node_paths=PackedStringArray("sprite")]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_cvnsp")
+sprite = NodePath("../Detect_world")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HP_player" unique_id=416464269]
+shape = SubResource("CircleShape2D_aq4fw")

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://c2m2kgx25kerw"]
+
+[ext_resource type="Script" uid="uid://bv5dbmvxq3lsh" path="res://Script/damageable.gd" id="1_2vp57"]
+[ext_resource type="Texture2D" uid="uid://ctodtth1eytxe" path="res://Shape Template/Square.svg" id="2_rnpc4"]
+[ext_resource type="Script" uid="uid://du0m07f4hosur" path="res://Script/Detect_color.gd" id="3_rnpc4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q1uvj"]
+size = Vector2(124.999756, 124.99999)
+
+[node name="DETECT_DAMAGEABLE" type="Area2D" unique_id=145219017 node_paths=PackedStringArray("check")]
+scale = Vector2(0.048, 0.544)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_2vp57")
+check = NodePath("Checkcolor")
+
+[node name="Checkcolor" type="Sprite2D" parent="." unique_id=596001742 node_paths=PackedStringArray("damageable")]
+self_modulate = Color(1.0829419e-07, 0.35603723, 0.2095168, 1)
+texture = ExtResource("2_rnpc4")
+script = ExtResource("3_rnpc4")
+damageable = NodePath("..")
+color = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1920584155]
+shape = SubResource("RectangleShape2D_q1uvj")
