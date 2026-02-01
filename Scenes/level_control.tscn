@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://b76p1priwi6eq"]
+
+[ext_resource type="Script" uid="uid://bv2y51nhsdy2j" path="res://Script/Timer.gd" id="1_cqbfv"]
+[ext_resource type="AudioStream" uid="uid://ddy3aav8ccoeu" path="res://light_switch_019.wav" id="2_y8drk"]
+
+[sub_resource type="Animation" id="Animation_aq4fw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("level_Control/Text:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("level_Control/Text:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["3"]
+}
+
+[sub_resource type="Animation" id="Animation_ivycn"]
+resource_name = "pop_up"
+length = 3.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("level_Control/Text:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.7, 1, 1.1666666, 1.3333334, 1.7, 2, 2.1666667, 2.3333333, 2.651133, 3.1273549),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.4, 1.4), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0), Vector2(1.4, 1.4), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0), Vector2(1.4, 1.4), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("level_Control/Text:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2.0057652),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": ["3", "2", "1"]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("level_Control")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2.0177999, 3.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"play_sfx_sound"
+}, {
+"args": [],
+"method": &"play_sfx_sound"
+}, {
+"args": [],
+"method": &"play_sfx_sound"
+}, {
+"args": [],
+"method": &"emitir_start"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q1uvj"]
+_data = {
+&"RESET": SubResource("Animation_aq4fw"),
+&"pop_up": SubResource("Animation_ivycn")
+}
+
+[node name="level_Control" type="Control" unique_id=1007756323 node_paths=PackedStringArray("playercontroller", "level", "animator")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cqbfv")
+playercontroller = NodePath("")
+level = NodePath("")
+animator = NodePath("AnimationPlayer")
+sfx_count = ExtResource("2_y8drk")
+
+[node name="Text" type="Label" parent="." unique_id=721745242]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(576, 324)
+theme_override_font_sizes/font_size = 120
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1552841937]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_q1uvj")

@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://c7yisignyn4l1" path="res://836201__matustrm__ui_hover.wav" id="2_vgqql"]
 [ext_resource type="Script" uid="uid://icjsfjpl4w1j" path="res://Script/Detect_world.gd" id="3_6t5aa"]
 [ext_resource type="AudioStream" uid="uid://1ujcqmr0bysw" path="res://835881__matustrm__failed.wav" id="5_fkybt"]
+[ext_resource type="Script" uid="uid://b42ifaucre0rn" path="res://addons/trail_2d/trail_2d.gd" id="6_x3wgy"]
 
 [sub_resource type="Curve" id="Curve_cvnsp"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0625, 0.19101131), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -12,6 +13,10 @@ point_count = 3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aq4fw"]
 radius = 4.4721355
+
+[sub_resource type="Curve" id="Curve_x3wgy"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Player" type="Node2D" unique_id=1119195415 node_paths=PackedStringArray("player")]
 rotation = 1.2437868
@@ -49,3 +54,9 @@ sfx_die = ExtResource("5_fkybt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HP_player" unique_id=416464269]
 shape = SubResource("CircleShape2D_aq4fw")
+
+[node name="Trail2D" type="Line2D" parent="." unique_id=1693412397]
+z_index = -1
+width_curve = SubResource("Curve_x3wgy")
+script = ExtResource("6_x3wgy")
+metadata/_custom_type_script = "uid://b42ifaucre0rn"

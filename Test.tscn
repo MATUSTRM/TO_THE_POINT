@@ -5,9 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://taxr6daef8bi" path="res://Scenes/objetivo.tscn" id="3_2au82"]
 [ext_resource type="PackedScene" uid="uid://dcsd48qu80qd1" path="res://Scenes/bandera.tscn" id="4_8tn2x"]
 [ext_resource type="PackedScene" uid="uid://c2m2kgx25kerw" path="res://Scenes/Damageable.tscn" id="5_q1uvj"]
-[ext_resource type="Script" uid="uid://bv2y51nhsdy2j" path="res://Script/Timer.gd" id="6_ivycn"]
+[ext_resource type="PackedScene" uid="uid://b76p1priwi6eq" path="res://Scenes/level_control.tscn" id="6_q1uvj"]
 [ext_resource type="Script" uid="uid://81yic0jeeo6j" path="res://Script/tutorial.gd" id="7_q1uvj"]
-[ext_resource type="AudioStream" uid="uid://ddy3aav8ccoeu" path="res://light_switch_019.wav" id="7_qs82m"]
 
 [sub_resource type="Curve2D" id="Curve2D_rvu7i"]
 _data = {
@@ -50,90 +49,6 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_2au82"),
 &"road": SubResource("Animation_8tn2x")
-}
-
-[sub_resource type="Animation" id="Animation_aq4fw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("level_Control/Text:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("level_Control/Text:text")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["3"]
-}
-
-[sub_resource type="Animation" id="Animation_ivycn"]
-resource_name = "pop_up"
-length = 3.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("level_Control/Text:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.7, 1, 1.1666666, 1.3333334, 1.7, 2, 2.1666667, 2.3333333, 2.651133, 3.1273549),
-"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(1.4, 1.4), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0), Vector2(1.4, 1.4), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0), Vector2(1.4, 1.4), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("level_Control/Text:text")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1, 2.0057652),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": ["3", "2", "1"]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("level_Control")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1, 2.0177999, 3.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"values": [{
-"args": [],
-"method": &"play_sfx_sound"
-}, {
-"args": [],
-"method": &"play_sfx_sound"
-}, {
-"args": [],
-"method": &"play_sfx_sound"
-}, {
-"args": [],
-"method": &"emitir_start"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_q1uvj"]
-_data = {
-&"RESET": SubResource("Animation_aq4fw"),
-&"pop_up": SubResource("Animation_ivycn")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qs82m"]
@@ -191,36 +106,9 @@ position = Vector2(25, 0)
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1467978644]
 
-[node name="level_Control" type="Control" parent="HUD" unique_id=953647448 node_paths=PackedStringArray("playercontroller", "level", "animator")]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("6_ivycn")
+[node name="level_Control" parent="HUD" unique_id=1007756323 node_paths=PackedStringArray("playercontroller", "level") instance=ExtResource("6_q1uvj")]
 playercontroller = NodePath("../../PATH LEVEL/PathFollow1/Player")
 level = NodePath("../../PATH LEVEL")
-animator = NodePath("AnimationPlayer")
-sfx_count = ExtResource("7_qs82m")
-
-[node name="Text" type="Label" parent="HUD/level_Control" unique_id=22299153]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1e-05, 1e-05)
-pivot_offset = Vector2(576, 324)
-theme_override_font_sizes/font_size = 120
-text = "3"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/level_Control" unique_id=1418900481]
-root_node = NodePath("../..")
-libraries/ = SubResource("AnimationLibrary_q1uvj")
 
 [node name="Tutorial" type="Area2D" parent="." unique_id=1039259668 node_paths=PackedStringArray("playercontroller")]
 position = Vector2(-67, 1)
@@ -231,3 +119,14 @@ playercontroller = NodePath("../PATH LEVEL/PathFollow1/Player")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tutorial" unique_id=1235443506]
 shape = SubResource("RectangleShape2D_qs82m")
+
+[node name="Background" type="CanvasLayer" parent="." unique_id=1116807727]
+layer = -5
+
+[node name="TextureRect" type="ColorRect" parent="Background" unique_id=641255910]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.19940561, 0.2726215, 0.4793967, 1)
