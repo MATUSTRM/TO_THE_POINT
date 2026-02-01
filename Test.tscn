@@ -89,6 +89,7 @@ position = Vector2(189, -29)
 progress = 260.0
 
 [node name="OBJETIVO" parent="PATH LEVEL/PathFollow2D" unique_id=191101985 node_paths=PackedStringArray("level", "playercontroller", "bandera") instance=ExtResource("3_2au82")]
+rotation = 0.0
 level = NodePath("../..")
 playercontroller = NodePath("../../PathFollow1/Player")
 using = true
@@ -111,7 +112,7 @@ playercontroller = NodePath("../../PATH LEVEL/PathFollow1/Player")
 level = NodePath("../../PATH LEVEL")
 
 [node name="Tutorial" type="Area2D" parent="." unique_id=1039259668 node_paths=PackedStringArray("playercontroller")]
-position = Vector2(-67, 1)
+position = Vector2(-14, -1)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("7_q1uvj")

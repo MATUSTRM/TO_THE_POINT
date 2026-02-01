@@ -10,7 +10,7 @@ radius = 36.95
 rotation = 0.009478391
 scale = Vector2(0.072, 0.072)
 collision_layer = 0
-collision_mask = 2
+collision_mask = 0
 script = ExtResource("1_al4sf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=586761082]

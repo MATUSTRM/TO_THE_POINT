@@ -5,6 +5,7 @@ class_name hp_Player
 @export var sprite : Sprite2D
 @export var particle : CPUParticles2D
 @export var sfx_die: AudioStream
+@onready var trail_2d: Line2D = $"../Trail2D"
 
 func take_damage(damage : int):
 	hp -= damage
@@ -14,6 +15,7 @@ func take_damage(damage : int):
 		## ACA HABRA OTRO SONIDO PARA CUANDO RECIBA DANO
 		pass
 func die():
+	trail_2d.visible = false
 	particle.emitting = true
 	audiomanager.play_sfx_oneshot(sfx_die)
 	set_collision_layer_value(2,false)
