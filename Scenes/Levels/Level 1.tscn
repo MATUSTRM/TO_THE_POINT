@@ -1,19 +1,20 @@
-[gd_scene format=3 uid="uid://bwso35h0hpp76"]
+[gd_scene format=3 uid="uid://bmtm5sncw1pkd"]
 
-[ext_resource type="Script" uid="uid://c1c605vmemp3j" path="res://Test.gd" id="1_njov2"]
-[ext_resource type="PackedScene" uid="uid://cp4r4cm52t46l" path="res://Scenes/player.tscn" id="2_8tn2x"]
-[ext_resource type="PackedScene" uid="uid://taxr6daef8bi" path="res://Scenes/objetivo.tscn" id="3_2au82"]
-[ext_resource type="PackedScene" uid="uid://dcsd48qu80qd1" path="res://Scenes/bandera.tscn" id="4_8tn2x"]
-[ext_resource type="PackedScene" uid="uid://c2m2kgx25kerw" path="res://Scenes/Damageable.tscn" id="5_q1uvj"]
-[ext_resource type="PackedScene" uid="uid://b76p1priwi6eq" path="res://Scenes/level_control.tscn" id="6_q1uvj"]
-[ext_resource type="Script" uid="uid://81yic0jeeo6j" path="res://Script/tutorial.gd" id="7_q1uvj"]
-[ext_resource type="Script" uid="uid://bm8fbja5ocu44" path="res://Script/level_transition.gd" id="8_qs82m"]
+[ext_resource type="Script" uid="uid://c1c605vmemp3j" path="res://Test.gd" id="1_d80xo"]
+[ext_resource type="PackedScene" uid="uid://cp4r4cm52t46l" path="res://Scenes/player.tscn" id="2_gk1sg"]
+[ext_resource type="PackedScene" uid="uid://taxr6daef8bi" path="res://Scenes/objetivo.tscn" id="3_st7rb"]
+[ext_resource type="PackedScene" uid="uid://dcsd48qu80qd1" path="res://Scenes/bandera.tscn" id="4_ak4ck"]
+[ext_resource type="PackedScene" uid="uid://c2m2kgx25kerw" path="res://Scenes/Damageable.tscn" id="5_uvw2q"]
+[ext_resource type="PackedScene" uid="uid://b76p1priwi6eq" path="res://Scenes/level_control.tscn" id="6_6xml1"]
+[ext_resource type="Script" uid="uid://bm8fbja5ocu44" path="res://Script/level_transition.gd" id="7_buryd"]
+[ext_resource type="PackedScene" uid="uid://cw2pekfw02bag" path="res://Scenes/estrellas.tscn" id="7_st7rb"]
+[ext_resource type="PackedScene" uid="uid://bk71lxl4x6spi" path="res://Scenes/Levels/Level 2.tscn" id="8_gk1sg"]
 
 [sub_resource type="Curve2D" id="Curve2D_rvu7i"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -58, -29, 0, 0, 0, 0, 189, -29)
+"points": PackedVector2Array(0, 0, 0, 0, -58, -29, 0, 0, 0, 0, -19, -28, 0, 0, 0, 0, -2, -79, 0, 0, 0, 0, 17, 13, 0, 0, 0, 0, 47, -78, 0, 0, 0, 0, 78, 9, 0, 0, 0, 0, 106, -78, 0, 0, 0, 0, 134, 4, 0, 0, 0, 0, 151, -36, 0, 0, 0, 0, 189, -27)
 }
-point_count = 2
+point_count = 10
 
 [sub_resource type="Animation" id="Animation_2au82"]
 length = 0.001
@@ -52,9 +53,6 @@ _data = {
 &"road": SubResource("Animation_8tn2x")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qs82m"]
-size = Vector2(8, 46)
-
 [sub_resource type="Gradient" id="Gradient_qs82m"]
 offsets = PackedFloat32Array(0, 0.99462366)
 colors = PackedColorArray(0.0073527903, 0.21955386, 0.42064744, 1, 0.017263394, 0.47199154, 0.575588, 1)
@@ -80,7 +78,8 @@ glow_bloom = 1.0
 [node name="PATH LEVEL" type="Path2D" parent="." unique_id=1395030184 node_paths=PackedStringArray("path", "pathf", "animator", "line")]
 position = Vector2(-60, 28)
 curve = SubResource("Curve2D_rvu7i")
-script = ExtResource("1_njov2")
+script = ExtResource("1_d80xo")
+speed_path = 0.30000000000000004
 path = NodePath(".")
 pathf = NodePath("PathFollow1")
 animator = NodePath("PathFollow1/AnimationPlayer")
@@ -88,28 +87,31 @@ using = true
 line = NodePath("Line2D")
 
 [node name="Line2D" type="Line2D" parent="PATH LEVEL" unique_id=1363213671]
-points = PackedVector2Array(-58, -29, 189, -29)
+points = PackedVector2Array(-58, -29, -19, -28, -2, -79, 17, 13, 47, -78, 78, 9, 106, -78, 134, 4, 151, -36, 189, -27)
 width = 2.144
+round_precision = 32
+antialiased = true
 
 [node name="PathFollow1" type="PathFollow2D" parent="PATH LEVEL" unique_id=383303336]
 position = Vector2(-58, -29)
 rotation = 0.009478389
 rotates = false
 
-[node name="Player" parent="PATH LEVEL/PathFollow1" unique_id=479054183 instance=ExtResource("2_8tn2x")]
+[node name="Player" parent="PATH LEVEL/PathFollow1" unique_id=479054183 instance=ExtResource("2_gk1sg")]
 color = 1
 active = true
-is_tutorial = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PATH LEVEL/PathFollow1" unique_id=876528186]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_aq4fw")
+speed_scale = 0.3
 
 [node name="PathFollow2D" type="PathFollow2D" parent="PATH LEVEL" unique_id=140392958]
-position = Vector2(189, -29)
-progress = 260.0
+position = Vector2(189, -27)
+rotation = 0.23255694
+progress = 635.446
 
-[node name="OBJETIVO" parent="PATH LEVEL/PathFollow2D" unique_id=191101985 node_paths=PackedStringArray("level", "playercontroller", "bandera") instance=ExtResource("3_2au82")]
+[node name="OBJETIVO" parent="PATH LEVEL/PathFollow2D" unique_id=191101985 node_paths=PackedStringArray("level", "playercontroller", "bandera") instance=ExtResource("3_st7rb")]
 rotation = 0.0
 level = NodePath("../..")
 playercontroller = NodePath("../../PathFollow1/Player")
@@ -120,31 +122,31 @@ bandera = NodePath("../../../Bandera")
 position = Vector2(1, 0)
 zoom = Vector2(1.65, 1.65)
 
-[node name="Bandera" parent="." unique_id=1038894258 instance=ExtResource("4_8tn2x")]
+[node name="Bandera" parent="." unique_id=1038894258 instance=ExtResource("4_ak4ck")]
 z_index = -1
 position = Vector2(129, -2)
 
-[node name="DETECT_DAMAGEABLE" parent="." unique_id=145219017 instance=ExtResource("5_q1uvj")]
-position = Vector2(25, 0)
+[node name="D_BLACK" parent="." unique_id=145219017 instance=ExtResource("5_uvw2q")]
+position = Vector2(-12.999996, -45.999992)
+scale = Vector2(0.048, 0.15232036)
+
+[node name="D_WHITE" parent="." unique_id=955563265 instance=ExtResource("5_uvw2q")]
+position = Vector2(46.00001, -47)
+scale = Vector2(0.048, 0.15232)
+
+[node name="Checkcolor" parent="D_WHITE" index="0" unique_id=596001742]
+color = 0
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1467978644]
 
-[node name="level_Control" parent="HUD" unique_id=1007756323 node_paths=PackedStringArray("playercontroller", "level") instance=ExtResource("6_q1uvj")]
+[node name="level_Control" parent="HUD" unique_id=1007756323 node_paths=PackedStringArray("playercontroller", "level") instance=ExtResource("6_6xml1")]
 playercontroller = NodePath("../../PATH LEVEL/PathFollow1/Player")
 level = NodePath("../../PATH LEVEL")
 
-[node name="Tutorial" type="Area2D" parent="." unique_id=1039259668 node_paths=PackedStringArray("playercontroller")]
-position = Vector2(-14, -1)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("7_q1uvj")
-playercontroller = NodePath("../PATH LEVEL/PathFollow1/Player")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Tutorial" unique_id=1235443506]
-shape = SubResource("RectangleShape2D_qs82m")
-
 [node name="Background" type="CanvasLayer" parent="." unique_id=1116807727]
 layer = -5
+
+[node name="ESTRELLAS" parent="Background" unique_id=1805971425 instance=ExtResource("7_st7rb")]
 
 [node name="TextureRect" type="TextureRect" parent="Background" unique_id=1364765219]
 z_index = -37
@@ -155,8 +157,12 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_c4vo5")
 
-[node name="Scene_controller" type="Node" parent="." unique_id=533872690]
-script = ExtResource("8_qs82m")
+[node name="scene_controller" type="Node" parent="." unique_id=533872690 node_paths=PackedStringArray("objetivo")]
+script = ExtResource("7_buryd")
+objetivo = NodePath("../PATH LEVEL/PathFollow2D/OBJETIVO")
+a_nivel = ExtResource("8_gk1sg")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=673455953]
 environment = SubResource("Environment_qs82m")
+
+[editable path="D_WHITE"]

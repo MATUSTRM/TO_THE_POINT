@@ -17,6 +17,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("cambiar"):
+		change_color()
 		set_color()
 
 func change_color():
@@ -26,7 +27,7 @@ func change_color():
 				color = 1
 			else:
 				color = 0
-			set_color()
+			
 			
 			
 func set_color():
@@ -46,6 +47,8 @@ func active_player():
 	if is_tutorial:
 		is_tutorial = false
 		return
+	else:
+		pass
 	active = true
 	
 func inactive_player():

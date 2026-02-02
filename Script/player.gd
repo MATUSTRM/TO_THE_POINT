@@ -1,5 +1,4 @@
 extends Area2D
-
 class_name hp_Player
 @export var hp : int 
 @export var sprite : Sprite2D
@@ -11,9 +10,8 @@ func take_damage(damage : int):
 	hp -= damage
 	if hp < 1:
 		die()
-	else:
-		## ACA HABRA OTRO SONIDO PARA CUANDO RECIBA DANO
-		pass
+
+
 func die():
 	trail_2d.visible = false
 	particle.emitting = true

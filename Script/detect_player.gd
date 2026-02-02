@@ -1,6 +1,6 @@
 extends Area2D
 
-
+class_name Objetivo
 
 @export var color : colores
 enum colores {one,two}

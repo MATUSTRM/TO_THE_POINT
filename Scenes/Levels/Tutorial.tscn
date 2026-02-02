@@ -1,0 +1,232 @@
+[gd_scene format=3 uid="uid://bwso35h0hpp76"]
+
+[ext_resource type="Script" uid="uid://c1c605vmemp3j" path="res://Test.gd" id="1_65xyd"]
+[ext_resource type="PackedScene" uid="uid://cp4r4cm52t46l" path="res://Scenes/player.tscn" id="2_356um"]
+[ext_resource type="PackedScene" uid="uid://taxr6daef8bi" path="res://Scenes/objetivo.tscn" id="3_u3mja"]
+[ext_resource type="PackedScene" uid="uid://dcsd48qu80qd1" path="res://Scenes/bandera.tscn" id="4_v6tyg"]
+[ext_resource type="PackedScene" uid="uid://c2m2kgx25kerw" path="res://Scenes/Damageable.tscn" id="5_1odfw"]
+[ext_resource type="PackedScene" uid="uid://b76p1priwi6eq" path="res://Scenes/level_control.tscn" id="6_4rdjy"]
+[ext_resource type="Script" uid="uid://81yic0jeeo6j" path="res://Script/tutorial.gd" id="7_egla1"]
+[ext_resource type="Script" uid="uid://bm8fbja5ocu44" path="res://Script/level_transition.gd" id="8_fxugg"]
+[ext_resource type="PackedScene" uid="uid://bmtm5sncw1pkd" path="res://Scenes/Levels/Level 1.tscn" id="9_qlkbh"]
+[ext_resource type="Texture2D" uid="uid://dkgknpsj73sog" path="res://Shape Template/spacebar.svg" id="10_1wrtt"]
+
+[sub_resource type="Curve2D" id="Curve2D_rvu7i"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -58, -29, 0, 0, 0, 0, 189, -29)
+}
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_2au82"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow1:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_8tn2x"]
+resource_name = "road"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow1:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aq4fw"]
+_data = {
+&"RESET": SubResource("Animation_2au82"),
+&"road": SubResource("Animation_8tn2x")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qs82m"]
+size = Vector2(8, 46)
+
+[sub_resource type="Gradient" id="Gradient_qs82m"]
+offsets = PackedFloat32Array(0, 0.99462366)
+colors = PackedColorArray(0.0073527903, 0.21955386, 0.42064744, 1, 0.017263394, 0.47199154, 0.575588, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_c4vo5"]
+gradient = SubResource("Gradient_qs82m")
+fill_from = Vector2(0.46153846, 0.97008544)
+fill_to = Vector2(0.4871795, 0)
+
+[sub_resource type="Environment" id="Environment_qs82m"]
+background_mode = 3
+tonemap_agx_white = 2.0
+tonemap_agx_contrast = 1.26
+ssr_fade_out = 0.3535534
+ssao_radius = 10.86
+ssao_intensity = 14.56
+glow_enabled = true
+glow_intensity = 0.89
+glow_bloom = 1.0
+
+[sub_resource type="Animation" id="Animation_65xyd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spacebar:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_356um"]
+resource_name = "nice"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spacebar:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 0.5748),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_u3mja"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spacebar:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.67058825)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v6tyg"]
+_data = {
+&"RESET": SubResource("Animation_65xyd"),
+&"nice": SubResource("Animation_356um"),
+&"show": SubResource("Animation_u3mja")
+}
+
+[node name="Test" type="Node2D" unique_id=1113602705]
+
+[node name="PATH LEVEL" type="Path2D" parent="." unique_id=1395030184 node_paths=PackedStringArray("path", "pathf", "animator", "line")]
+position = Vector2(-60, 28)
+curve = SubResource("Curve2D_rvu7i")
+script = ExtResource("1_65xyd")
+speed_path = 1.0
+path = NodePath(".")
+pathf = NodePath("PathFollow1")
+animator = NodePath("PathFollow1/AnimationPlayer")
+using = true
+line = NodePath("Line2D")
+
+[node name="Line2D" type="Line2D" parent="PATH LEVEL" unique_id=1363213671]
+points = PackedVector2Array(-58, -29, 189, -29)
+width = 2.144
+
+[node name="PathFollow1" type="PathFollow2D" parent="PATH LEVEL" unique_id=383303336]
+position = Vector2(-58, -29)
+rotation = 0.009478389
+rotates = false
+
+[node name="Player" parent="PATH LEVEL/PathFollow1" unique_id=479054183 instance=ExtResource("2_356um")]
+color = 1
+active = true
+is_tutorial = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PATH LEVEL/PathFollow1" unique_id=876528186]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_aq4fw")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="PATH LEVEL" unique_id=140392958]
+position = Vector2(189, -29)
+progress = 260.0
+
+[node name="OBJETIVO" parent="PATH LEVEL/PathFollow2D" unique_id=191101985 node_paths=PackedStringArray("level", "playercontroller", "bandera") instance=ExtResource("3_u3mja")]
+rotation = 0.0
+level = NodePath("../..")
+playercontroller = NodePath("../../PathFollow1/Player")
+using = true
+bandera = NodePath("../../../Bandera")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=428855998]
+position = Vector2(1, 0)
+zoom = Vector2(1.65, 1.65)
+
+[node name="Bandera" parent="." unique_id=1038894258 instance=ExtResource("4_v6tyg")]
+z_index = -1
+position = Vector2(129, -2)
+
+[node name="DETECT_DAMAGEABLE" parent="." unique_id=145219017 instance=ExtResource("5_1odfw")]
+position = Vector2(25, 0)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1467978644]
+
+[node name="level_Control" parent="HUD" unique_id=1007756323 node_paths=PackedStringArray("playercontroller", "level") instance=ExtResource("6_4rdjy")]
+playercontroller = NodePath("../../PATH LEVEL/PathFollow1/Player")
+level = NodePath("../../PATH LEVEL")
+
+[node name="Tutorial" type="Area2D" parent="." unique_id=1039259668 node_paths=PackedStringArray("playercontroller", "animation_bar", "path_")]
+position = Vector2(-14, -1)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("7_egla1")
+playercontroller = NodePath("../PATH LEVEL/PathFollow1/Player")
+animation_bar = NodePath("../Node2D/AnimationPlayer")
+path_ = NodePath("../PATH LEVEL")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tutorial" unique_id=1235443506]
+shape = SubResource("RectangleShape2D_qs82m")
+
+[node name="Background" type="CanvasLayer" parent="." unique_id=1116807727]
+layer = -5
+
+[node name="TextureRect" type="TextureRect" parent="Background" unique_id=1364765219]
+z_index = -37
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_c4vo5")
+
+[node name="scene_controller" type="Node" parent="." unique_id=533872690 node_paths=PackedStringArray("objetivo")]
+script = ExtResource("8_fxugg")
+objetivo = NodePath("../PATH LEVEL/PathFollow2D/OBJETIVO")
+a_nivel = ExtResource("9_qlkbh")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=673455953]
+environment = SubResource("Environment_qs82m")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1454698411]
+position = Vector2(2, 76)
+scale = Vector2(0.24836598, 0.24836601)
+
+[node name="Spacebar" type="Sprite2D" parent="Node2D" unique_id=1598056445]
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("10_1wrtt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D" unique_id=1789647030]
+libraries/ = SubResource("AnimationLibrary_v6tyg")

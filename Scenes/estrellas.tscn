@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://cw2pekfw02bag"]
+
+[ext_resource type="Texture2D" uid="uid://b38id3a8u6cbv" path="res://Shape Template/Circle.svg" id="1_nq5l5"]
+
+[node name="ESTRELLAS" type="CanvasGroup" unique_id=1805971425]
+modulate = Color(1, 1, 1, 0.5294118)
+
+[node name="Circle" type="Sprite2D" parent="." unique_id=2113912554]
+position = Vector2(510, 435)
+scale = Vector2(0.05552699, 0.05552699)
+texture = ExtResource("1_nq5l5")
+
+[node name="Circle4" type="Sprite2D" parent="." unique_id=992276515]
+position = Vector2(890.00006, 280)
+scale = Vector2(0.041821424, 0.041821424)
+texture = ExtResource("1_nq5l5")
+
+[node name="Circle2" type="Sprite2D" parent="." unique_id=1019451713]
+position = Vector2(158.47043, 234.61383)
+scale = Vector2(0.05552699, 0.05552699)
+texture = ExtResource("1_nq5l5")
+
+[node name="Circle5" type="Sprite2D" parent="." unique_id=1221413912]
+position = Vector2(538.47046, 79.61383)
+scale = Vector2(0.041821424, 0.041821424)
+texture = ExtResource("1_nq5l5")
+
+[node name="Circle13" type="Sprite2D" parent="." unique_id=1851381986]
+position = Vector2(447, 209)
+scale = Vector2(0.041821424, 0.041821424)
+texture = ExtResource("1_nq5l5")
+
+[node name="Circle14" type="Sprite2D" parent="." unique_id=873172413]
+position = Vector2(933.00006, 489)
+scale = Vector2(0.041821424, 0.041821424)
+texture = ExtResource("1_nq5l5")
+
+[node name="Circle15" type="Sprite2D" parent="." unique_id=144001911]
+position = Vector2(1083, 601)
+scale = Vector2(0.041821424, 0.041821424)
+texture = ExtResource("1_nq5l5")
+
+[node name="Circle3" type="Sprite2D" parent="." unique_id=287655428]
+position = Vector2(641.47046, 355.61383)
+scale = Vector2(0.05552699, 0.05552699)
+texture = ExtResource("1_nq5l5")
+
+[node name="Circle6" type="Sprite2D" parent="." unique_id=1075595527]
+position = Vector2(1021.47046, 200.61383)
+scale = Vector2(0.041821424, 0.041821424)
+texture = ExtResource("1_nq5l5")
+
+[node name="Circle7" type="Sprite2D" parent="." unique_id=560535773]
+position = Vector2(674.47046, 544.61383)
+scale = Vector2(0.05552699, 0.05552699)
+texture = ExtResource("1_nq5l5")
+
+[node name="Circle8" type="Sprite2D" parent="." unique_id=773757748]
+position = Vector2(1054.4705, 389.61383)
+scale = Vector2(0.041821424, 0.041821424)
+texture = ExtResource("1_nq5l5")
+
+[node name="Circle9" type="Sprite2D" parent="." unique_id=1977884044]
+position = Vector2(56.47046, 552.61383)
+scale = Vector2(0.05552699, 0.05552699)
+texture = ExtResource("1_nq5l5")
+
+[node name="Circle10" type="Sprite2D" parent="." unique_id=1432472765]
+position = Vector2(436.47046, 397.61383)
+scale = Vector2(0.041821424, 0.041821424)
+texture = ExtResource("1_nq5l5")
+
+[node name="Circle11" type="Sprite2D" parent="." unique_id=571623248]
+position = Vector2(34.470436, 245.61383)
+scale = Vector2(0.05552699, 0.05552699)
+texture = ExtResource("1_nq5l5")
+
+[node name="Circle12" type="Sprite2D" parent="." unique_id=1011448955]
+position = Vector2(414.47043, 90.61383)
+scale = Vector2(0.041821424, 0.041821424)
+texture = ExtResource("1_nq5l5")

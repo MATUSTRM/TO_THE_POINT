@@ -14,10 +14,10 @@ func _process(delta: float) -> void:
 
 
 func change_scene(scene : PackedScene):
-	animator.play("fade_out")
+	animator.play_backwards("fade_out")
 	await animator.animation_finished
 	get_tree().change_scene_to_packed(scene)
-	animator.play_backwards("fade_out")
+	animator.play("fade_out")
 	pass
 	
 

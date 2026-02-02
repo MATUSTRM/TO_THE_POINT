@@ -4,7 +4,7 @@ extends Node
 class_name line_level
 
 
-
+@export_range(0.2,2) var speed_path : float
 @export var path : Path2D
 @export var pathf : PathFollow2D
 @export var animator : AnimationPlayer
@@ -21,7 +21,8 @@ func _ready() -> void:
 	pass # Replace with function body.
 	
 
-
+func _process(delta: float) -> void:
+	animator.speed_scale = speed_path
 
 func actualizar():
 	line.clear_points()
