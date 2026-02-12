@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b76p1priwi6eq" path="res://Scenes/level_control.tscn" id="6_eg8jt"]
 [ext_resource type="Script" uid="uid://bm8fbja5ocu44" path="res://Script/level_transition.gd" id="7_pyc45"]
 [ext_resource type="PackedScene" uid="uid://cw2pekfw02bag" path="res://Scenes/estrellas.tscn" id="7_vk8ir"]
-[ext_resource type="PackedScene" uid="uid://bmtm5sncw1pkd" path="res://Scenes/Levels/Level 1.tscn" id="8_52cri"]
+[ext_resource type="PackedScene" uid="uid://28u0mkvpd2b" path="res://Scenes/final_scene.tscn" id="9_vk8ir"]
 
 [sub_resource type="Curve2D" id="Curve2D_d24o7"]
 _data = {
@@ -53,12 +53,12 @@ _data = {
 &"road": SubResource("Animation_8tn2x")
 }
 
-[sub_resource type="Gradient" id="Gradient_qs82m"]
+[sub_resource type="Gradient" id="Gradient_p14vy"]
 offsets = PackedFloat32Array(0, 0.99462366)
 colors = PackedColorArray(0.0073527903, 0.21955386, 0.42064744, 1, 0.017263394, 0.47199154, 0.575588, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_c4vo5"]
-gradient = SubResource("Gradient_qs82m")
+gradient = SubResource("Gradient_p14vy")
 fill_from = Vector2(0.46153846, 0.97008544)
 fill_to = Vector2(0.4871795, 0)
 
@@ -76,7 +76,7 @@ glow_bloom = 1.0
 [node name="Test" type="Node2D" unique_id=1113602705]
 
 [node name="PATH LEVEL" type="Path2D" parent="." unique_id=1395030184 node_paths=PackedStringArray("path", "pathf", "animator", "line")]
-position = Vector2(-112, -103)
+position = Vector2(5, -103)
 curve = SubResource("Curve2D_d24o7")
 script = ExtResource("1_d24o7")
 speed_path = 0.30000000000000004
@@ -87,6 +87,7 @@ using = true
 line = NodePath("Line2D")
 
 [node name="Line2D" type="Line2D" parent="PATH LEVEL" unique_id=1363213671]
+points = PackedVector2Array(-42, -27, -9, -58, 67, -11, -11, 46, 64, 73, 64, 146, -16, 162, -61, 217)
 width = 2.144
 round_precision = 32
 antialiased = true
@@ -123,20 +124,20 @@ zoom = Vector2(1.65, 1.65)
 
 [node name="Bandera" parent="." unique_id=1038894258 instance=ExtResource("4_1nrmx")]
 z_index = -1
-position = Vector2(-174, 115)
+position = Vector2(-55.000008, 115)
 
 [node name="D_BLACK" parent="." unique_id=145219017 instance=ExtResource("5_d8wq7")]
-position = Vector2(-49, -113.99999)
+position = Vector2(67.99999, -113.99999)
 rotation = 1.5707964
 scale = Vector2(0.048, 0.15232036)
 
 [node name="D_BLACK2" parent="." unique_id=288396722 instance=ExtResource("5_d8wq7")]
-position = Vector2(-48, 0.99999976)
+position = Vector2(68.99999, 0.99999976)
 rotation = 1.5707964
 scale = Vector2(0.048, 0.15232036)
 
 [node name="D_WHITE" parent="." unique_id=955563265 instance=ExtResource("5_d8wq7")]
-position = Vector2(-136.99998, 72)
+position = Vector2(-19.999985, 72)
 rotation = 2.0943952
 scale = Vector2(0.048, 0.15232)
 
@@ -147,7 +148,7 @@ color = 0
 visible = false
 
 [node name="D_WHITE2" parent="." unique_id=507701069 instance=ExtResource("5_d8wq7")]
-position = Vector2(-118, -56.999996)
+position = Vector2(-1.0000076, -56.999996)
 rotation = 1.5707964
 scale = Vector2(0.048, 0.15232)
 
@@ -180,7 +181,7 @@ texture = SubResource("GradientTexture2D_c4vo5")
 [node name="scene_controller" type="Node" parent="." unique_id=533872690 node_paths=PackedStringArray("objetivo")]
 script = ExtResource("7_pyc45")
 objetivo = NodePath("../PATH LEVEL/PathFollow2D/OBJETIVO")
-a_nivel = ExtResource("8_52cri")
+a_nivel = ExtResource("9_vk8ir")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=673455953]
 environment = SubResource("Environment_qs82m")

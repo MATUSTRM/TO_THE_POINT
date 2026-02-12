@@ -10,21 +10,22 @@
 		{
 			"uuid": "c5581e76-1419-4a31-a3e6-d835e0c5955f",
 			"title": "Todo",
-			"tasks": [
-				"454b4d72-6fe9-4973-a480-f682f2198301",
-				"5f381a57-8d44-4b38-8ac7-283ff49fb4e5"
-			]
+			"tasks": []
 		},
 		{
 			"uuid": "c4565c99-b2bd-46a2-8c76-f04a7f976f63",
 			"title": "Doing",
-			"tasks": []
+			"tasks": [
+				"98124e42-a6a2-4c1e-9a04-33ee006f285e"
+			]
 		},
 		{
 			"uuid": "d5b5eff7-9bd2-4bd5-b47c-a7e9dfd67d0d",
 			"title": "Done",
 			"tasks": [
-				"6821a713-100b-4531-aef2-1db7d5d3af23"
+				"6821a713-100b-4531-aef2-1db7d5d3af23",
+				"454b4d72-6fe9-4973-a480-f682f2198301",
+				"5f381a57-8d44-4b38-8ac7-283ff49fb4e5"
 			]
 		}
 	],
@@ -46,6 +47,13 @@
 		{
 			"uuid": "5f381a57-8d44-4b38-8ac7-283ff49fb4e5",
 			"title": "Hacer lvl 3",
+			"description": "",
+			"category": "a4014fdc-a79d-485e-9dcf-0a4eab9b1de8",
+			"steps": []
+		},
+		{
+			"uuid": "98124e42-a6a2-4c1e-9a04-33ee006f285e",
+			"title": "Hacer un \"Gracias por jugar\"",
 			"description": "",
 			"category": "a4014fdc-a79d-485e-9dcf-0a4eab9b1de8",
 			"steps": []

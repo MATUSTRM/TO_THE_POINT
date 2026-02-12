@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dcsd48qu80qd1" path="res://Scenes/bandera.tscn" id="4_ak4ck"]
 [ext_resource type="PackedScene" uid="uid://c2m2kgx25kerw" path="res://Scenes/Damageable.tscn" id="5_uvw2q"]
 [ext_resource type="PackedScene" uid="uid://b76p1priwi6eq" path="res://Scenes/level_control.tscn" id="6_6xml1"]
+[ext_resource type="Texture2D" uid="uid://b38id3a8u6cbv" path="res://Shape Template/Circle.svg" id="7_ak4ck"]
 [ext_resource type="Script" uid="uid://bm8fbja5ocu44" path="res://Script/level_transition.gd" id="7_buryd"]
 [ext_resource type="PackedScene" uid="uid://cw2pekfw02bag" path="res://Scenes/estrellas.tscn" id="7_st7rb"]
 [ext_resource type="PackedScene" uid="uid://bk71lxl4x6spi" path="res://Scenes/Levels/Level 2.tscn" id="8_gk1sg"]
@@ -52,6 +53,10 @@ _data = {
 &"RESET": SubResource("Animation_2au82"),
 &"road": SubResource("Animation_8tn2x")
 }
+
+[sub_resource type="Curve" id="Curve_uvw2q"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.28653294, 0.046275377), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_qs82m"]
 offsets = PackedFloat32Array(0, 0.99462366)
@@ -146,7 +151,20 @@ level = NodePath("../../PATH LEVEL")
 [node name="Background" type="CanvasLayer" parent="." unique_id=1116807727]
 layer = -5
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Background" unique_id=871388737]
+position = Vector2(592, 316)
+amount = 70
+texture = ExtResource("7_ak4ck")
+lifetime = 3.0
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(500, 500)
+gravity = Vector2(0, 0)
+scale_amount_curve = SubResource("Curve_uvw2q")
+color = Color(1, 1, 1, 0.10980392)
+
 [node name="ESTRELLAS" parent="Background" unique_id=1805971425 instance=ExtResource("7_st7rb")]
+visible = false
 
 [node name="TextureRect" type="TextureRect" parent="Background" unique_id=1364765219]
 z_index = -37

@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://28u0mkvpd2b"]
+
+[ext_resource type="PackedScene" uid="uid://cw2pekfw02bag" path="res://Scenes/estrellas.tscn" id="1_l225o"]
+
+[sub_resource type="Gradient" id="Gradient_qs82m"]
+offsets = PackedFloat32Array(0, 0.99462366)
+colors = PackedColorArray(0.0073527903, 0.21955386, 0.42064744, 1, 0.017263394, 0.47199154, 0.575588, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ay78q"]
+gradient = SubResource("Gradient_qs82m")
+fill_from = Vector2(0.46153846, 0.97008544)
+fill_to = Vector2(0.4871795, 0)
+
+[node name="Final Scene" type="Node2D" unique_id=581623310]
+
+[node name="Background" type="CanvasLayer" parent="." unique_id=1603017162]
+layer = -5
+
+[node name="TextureRect" type="TextureRect" parent="Background" unique_id=785017863]
+z_index = -37
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ay78q")
+
+[node name="ESTRELLAS" parent="Background" unique_id=1805971425 instance=ExtResource("1_l225o")]
+
+[node name="Label" type="RichTextLabel" parent="Background" unique_id=1513860495]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 62
+bbcode_enabled = true
+text = "[fade start=10][pulse]THANKS FOR PLAYING"
+horizontal_alignment = 1
+vertical_alignment = 1

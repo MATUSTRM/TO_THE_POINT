@@ -1,6 +1,5 @@
 extends CanvasLayer
 
-@export var scene : PackedScene
 @export var animator : AnimationPlayer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

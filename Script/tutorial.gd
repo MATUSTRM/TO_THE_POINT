@@ -4,6 +4,7 @@ var activado : bool
 @export var playercontroller : player_controller
 @export var animation_bar : AnimationPlayer
 @export var path_ :line_level
+@export var input_usado: bool
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	area_entered.connect(on_area_enter)
@@ -13,8 +14,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if activado:
 		if Input.is_action_just_pressed("cambiar"):
-			animation_bar.play("nice")
-			path_.road_active()
+			if input_usado == false:
+				animation_bar.play("nice")
+				path_.road_active()
+				input_usado = true
 			playercontroller.change_color()
 	pass
 
